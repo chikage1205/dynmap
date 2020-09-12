@@ -1196,7 +1196,25 @@ boxblock:id=carpet,data=*,ymax=0.0625
 # 1.9 models
 
 # End rod
-#[1.9.0-]block:id=end_rod,data=*,patch0=0:end_rod,transparency=TRANSPARENT
+patch:id=end_rod_0_down,Ox=0.250000,Oy=0.000000,Oz=-0.250000,Ux=1.250000,Uy=0.000000,Uz=-0.250000,Vx=0.250000,Vy=0.000000,Vz=0.750000,Umin=0.125000,Umax=0.375000,Vmin=0.625000,Vmax=0.875000
+patch:id=end_rod_0_up,Ox=1.250000,Oy=0.062500,Oz=0.750000,Ux=1.250000,Uy=0.062500,Uz=-0.250000,Vx=0.250000,Vy=0.062500,Vz=0.750000,Umin=0.125000,Umax=0.375000,Vmin=0.625000,Vmax=0.875000
+patch:id=end_rod_0_north,Ox=0.750000,Oy=-0.562500,Oz=0.375000,Ux=-0.250000,Uy=-0.562500,Uz=0.375000,Vx=0.750000,Vy=0.437500,Vz=0.375000,Umin=0.125000,Umax=0.375000,Vmin=0.562500,Vmax=0.625000
+patch:id=end_rod_0_south,Ox=0.250000,Oy=-0.562500,Oz=0.625000,Ux=1.250000,Uy=-0.562500,Uz=0.625000,Vx=0.250000,Vy=0.437500,Vz=0.625000,Umin=0.125000,Umax=0.375000,Vmin=0.562500,Vmax=0.625000
+patch:id=end_rod_0_west,Ox=0.375000,Oy=-0.562500,Oz=0.250000,Ux=0.375000,Uy=-0.562500,Uz=1.250000,Vx=0.375000,Vy=0.437500,Vz=0.250000,Umin=0.125000,Umax=0.375000,Vmin=0.562500,Vmax=0.625000
+patch:id=end_rod_0_east,Ox=0.625000,Oy=-0.562500,Oz=0.750000,Ux=0.625000,Uy=-0.562500,Uz=-0.250000,Vx=0.625000,Vy=0.437500,Vz=0.750000,Umin=0.125000,Umax=0.375000,Vmin=0.562500,Vmax=0.625000
+patch:id=end_rod_1_down,Ox=0.312500,Oy=0.062500,Oz=-0.437500,Ux=1.312500,Uy=0.062500,Uz=-0.437500,Vx=0.312500,Vy=0.062500,Vz=0.562500,Umin=0.125000,Umax=0.250000,Vmin=0.875000,Vmax=1.000000
+patch:id=end_rod_1_up,Ox=1.437500,Oy=1.000000,Oz=0.687500,Ux=1.437500,Uy=1.000000,Uz=-0.312500,Vx=0.437500,Vy=1.000000,Vz=0.687500,Umin=0.125000,Umax=0.250000,Vmin=0.875000,Vmax=1.000000
+patch:id=end_rod_1_north,Ox=0.562500,Oy=0.000000,Oz=0.437500,Ux=-0.437500,Uy=0.000000,Uz=0.437500,Vx=0.562500,Vy=1.000000,Vz=0.437500,Umin=0.000000,Umax=0.125000,Vmin=0.062500,Vmax=1.000000
+patch:id=end_rod_1_south,Ox=0.437500,Oy=0.000000,Oz=0.562500,Ux=1.437500,Uy=0.000000,Uz=0.562500,Vx=0.437500,Vy=1.000000,Vz=0.562500,Umin=0.000000,Umax=0.125000,Vmin=0.062500,Vmax=1.000000
+patch:id=end_rod_1_west,Ox=0.437500,Oy=0.000000,Oz=0.437500,Ux=0.437500,Uy=0.000000,Uz=1.437500,Vx=0.437500,Vy=1.000000,Vz=0.437500,Umin=0.000000,Umax=0.125000,Vmin=0.062500,Vmax=1.000000
+patch:id=end_rod_1_east,Ox=0.562500,Oy=0.000000,Oz=0.562500,Ux=0.562500,Uy=0.000000,Uz=-0.437500,Vx=0.562500,Vy=1.000000,Vz=0.562500,Umin=0.000000,Umax=0.125000,Vmin=0.062500,Vmax=1.000000
+
+[1.9.0-]patchblock:id=end_rod,data=0,patch0=end_rod_0_down@180/0/0,patch1=end_rod_0_up@180/0/0,patch2=end_rod_0_north@180/0/0,patch3=end_rod_0_south@180/0/0,patch4=end_rod_0_west@180/0/0,patch5=end_rod_0_east@180/0/0,patch6=end_rod_1_down@180/0/0,patch7=end_rod_1_up@180/0/0,patch8=end_rod_1_north@180/0/0,patch9=end_rod_1_south@180/0/0,patch10=end_rod_1_west@180/0/0,patch11=end_rod_1_east@180/0/0
+[1.9.0-]patchblock:id=end_rod,data=1,patch0=end_rod_0_down,patch1=end_rod_0_up,patch2=end_rod_0_north,patch3=end_rod_0_south,patch4=end_rod_0_west,patch5=end_rod_0_east,patch6=end_rod_1_down,patch7=end_rod_1_up,patch8=end_rod_1_north,patch9=end_rod_1_south,patch10=end_rod_1_west,patch11=end_rod_1_east
+[1.9.0-]patchblock:id=end_rod,data=2,patch0=end_rod_0_down@0/0/270,patch1=end_rod_0_up@0/0/270,patch2=end_rod_0_north@0/0/270,patch3=end_rod_0_south@0/0/270,patch4=end_rod_0_west@0/0/270,patch5=end_rod_0_east@0/0/270,patch6=end_rod_1_down@0/0/270,patch7=end_rod_1_up@0/0/270,patch8=end_rod_1_north@0/0/270,patch9=end_rod_1_south@0/0/270,patch10=end_rod_1_west@0/0/270,patch11=end_rod_1_east@0/0/270
+[1.9.0-]patchblock:id=end_rod,data=3,patch0=end_rod_0_down@0/0/90,patch1=end_rod_0_up@0/0/90,patch2=end_rod_0_north@0/0/90,patch3=end_rod_0_south@0/0/90,patch4=end_rod_0_west@0/0/90,patch5=end_rod_0_east@0/0/90,patch6=end_rod_1_down@0/0/90,patch7=end_rod_1_up@0/0/90,patch8=end_rod_1_north@0/0/90,patch9=end_rod_1_south@0/0/90,patch10=end_rod_1_west@0/0/90,patch11=end_rod_1_east@0/0/90
+[1.9.0-]patchblock:id=end_rod,data=4,patch0=end_rod_0_down@90/0/0,patch1=end_rod_0_up@90/0/0,patch2=end_rod_0_north@90/0/0,patch3=end_rod_0_south@90/0/0,patch4=end_rod_0_west@90/0/0,patch5=end_rod_0_east@90/0/0,patch6=end_rod_1_down@90/0/0,patch7=end_rod_1_up@90/0/0,patch8=end_rod_1_north@90/0/0,patch9=end_rod_1_south@90/0/0,patch10=end_rod_1_west@90/0/0,patch11=end_rod_1_east@90/0/0
+[1.9.0-]patchblock:id=end_rod,data=5,patch0=end_rod_0_down@270/0/0,patch1=end_rod_0_up@270/0/0,patch2=end_rod_0_north@270/0/0,patch3=end_rod_0_south@270/0/0,patch4=end_rod_0_west@270/0/0,patch5=end_rod_0_east@270/0/0,patch6=end_rod_1_down@270/0/0,patch7=end_rod_1_up@270/0/0,patch8=end_rod_1_north@270/0/0,patch9=end_rod_1_south@270/0/0,patch10=end_rod_1_west@270/0/0,patch11=end_rod_1_east@270/0/0
 
 # Chorus Plant
 [1.9.0-]customblock:id=chorus_plant,data=*,class=org.dynmap.hdmap.renderer.FenceWallBlockRenderer,type=wall,link0=200
