@@ -840,7 +840,7 @@ public class CTMTexturePack {
                 else if (ftn.startsWith("assets/")) {   // Already full path?
                 }
                 else if (colonindex > 0) {  // modid:path?
-                    ftn = String.format("assets/%s/textures/%s", modname, ftn);
+                    ftn = String.format("assets/%s/textures/blocks/%s", modname, ftn);
                 }
                 else { // no path (base tile)
                     ftn = String.format(deftxtpath, modname, ftn);
