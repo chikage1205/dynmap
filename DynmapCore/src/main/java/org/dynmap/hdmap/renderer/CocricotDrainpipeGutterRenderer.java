@@ -9,26 +9,10 @@ import org.dynmap.renderer.DynmapBlockState;
 import org.dynmap.renderer.MapDataContext;
 import org.dynmap.renderer.RenderPatch;
 import org.dynmap.renderer.RenderPatchFactory;
+import org.dynmap.renderer.RenderPatchFactory.SideVisible;
 
-public class CocricotStairBlockRenderer extends CustomRenderer {
-    private static final int TEX_TOP = 0;
-    private static final int TEX_BOTTOM = 1;
-    private static final int TEX_SIDE = 2;
-    private static final int TEX_SIDE1 = 3;
-    private static final int TEX_FRONT = 4;
-    private static final int TEX_BACK = 5;
-    private static final int I_TEX_TOP = 6;
-    private static final int I_TEX_BOTTOM = 7;
-    private static final int I_TEX_SIDE = 8;
-    private static final int I_TEX_SIDE1 = 9;
-    private static final int I_TEX_FRONT = 10;
-    private static final int I_TEX_BACK = 11;
-    private static final int IC_TEX_TOP = 12;
-    private static final int IC_TEX_BOTTOM = 13;
-    private static final int IC_TEX_SIDE = 14;
-    private static final int IC_TEX_SIDE1 = 15;
-    private static final int IC_TEX_FRONT = 16;
-    private static final int IC_TEX_BACK = 17;
+public class CocricotDrainpipeGutterRenderer extends CustomRenderer {
+    private static final int TEX = 0;
     private static BitSet stair_ids = new BitSet();
 
     private boolean extendedTexture;
@@ -109,57 +93,50 @@ public class CocricotStairBlockRenderer extends CustomRenderer {
     public String[] getTileEntityFieldsNeeded() {
         return tilefields;
     }
-
-    private static final int[] patchlist = { TEX_BOTTOM, TEX_TOP, TEX_FRONT, TEX_BACK, TEX_SIDE1, TEX_SIDE };
-    private static final int[] corPatchlist = { I_TEX_BOTTOM, I_TEX_TOP, I_TEX_FRONT, I_TEX_SIDE1, I_TEX_FRONT, I_TEX_SIDE };
-    private static final int[] icorPatchlist1 = { TEX_BOTTOM, TEX_TOP, TEX_SIDE, TEX_BACK, TEX_SIDE1, TEX_BACK };
-    private static final int[] icorPatchlist2 = { TEX_BOTTOM, TEX_TOP, TEX_FRONT, TEX_BACK, TEX_SIDE1, TEX_BACK };
-    private static final int[] icorPatchlist3 = { TEX_BOTTOM, TEX_TOP, TEX_SIDE, TEX_BACK, TEX_FRONT, TEX_BACK };
-    private static final int[] icorPatchlist1_ext = { IC_TEX_BOTTOM, IC_TEX_TOP, IC_TEX_SIDE, IC_TEX_BACK, IC_TEX_SIDE1, IC_TEX_BACK };
-    private static final int[] icorPatchlist2_ext = { IC_TEX_BOTTOM, IC_TEX_TOP, IC_TEX_FRONT, IC_TEX_BACK, IC_TEX_SIDE1, IC_TEX_BACK };
-    private static final int[] icorPatchlist3_ext = { IC_TEX_BOTTOM, IC_TEX_TOP, IC_TEX_SIDE, IC_TEX_BACK, IC_TEX_FRONT, IC_TEX_BACK };
     
     private RenderPatch[] buildStepMeshes(RenderPatchFactory rpf, int dat) {
         ArrayList<RenderPatch> list = new ArrayList<RenderPatch>();
         ArrayList<RenderPatch> rotatedList = new ArrayList<RenderPatch>();
-        boolean inverted = (dat & 0x4) != 0;
         int rotate = dat & 0x3;
         int xrot = 0;
         int yrot = 0;
         int zrot = 0;
+
+        int[] patchlist = {TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX};
         
-        addBox(rpf, list, 0, 1, 0.0, 0.5, 0, 1, patchlist);
-        addBox(rpf, list, 0.5, 1, 0, 1, 0, 1, patchlist);
+        list.add(rpf.getPatch(0.062500, 0.812500, 1.000000, 0.062500, 0.812500, -0.280000, 1.062500, 0.812500, 1.000000, 0.000000, 0.781250, 0.750000, 1.000000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.312500, 1.000000, 0.000000, 0.312500, 1.000000, 1.280000, 1.312500, 1.000000, 0.000000, 0.000000, 0.781250, 0.500000, 0.750000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.500000, 0.000000, 0.812500, 0.500000, 1.000000, 0.812500, 1.500000, 0.000000, 0.000000, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 1.000000, 1.062500, 0.500000, 0.000000, 1.062500, 1.500000, 1.000000, 0.000000, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.812500, 0.812500, -0.318750, 1.812500, 0.812500, 0.701250, 0.812500, 0.812500, -0.318750, 0.000000, 0.312500, 0.750000, 1.000000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.562500, 1.000000, 0.478125, 1.562500, 1.000000, -0.541875, 0.562500, 1.000000, 0.478125, 0.468750, 0.781250, 0.500000, 0.750000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.687500, -0.318750, 0.062500, 0.687500, -0.318750, 1.062500, 1.687500, -0.318750, 0.000000, 0.250000, 0.125000, 0.312500, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.500000, -1.020000, 0.812500, 0.500000, 0.000000, 0.812500, 1.500000, -1.020000, 0.687500, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 0.701250, 1.062500, 0.500000, -0.318750, 1.062500, 1.500000, 0.701250, 0.687500, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.812500, 0.812500, 1.000000, 1.812500, 0.812500, 2.020000, 0.812500, 0.812500, 1.000000, 0.000000, 0.312500, 0.750000, 1.000000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.562500, 1.000000, 1.318750, 1.562500, 1.000000, 0.298750, 0.562500, 1.000000, 1.318750, 0.000000, 0.312500, 0.500000, 0.750000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.687500, 1.318750, 1.812500, 0.687500, 1.318750, 0.812500, 1.687500, 1.318750, 0.000000, 0.250000, 0.125000, 0.312500, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.500000, 1.000000, 0.812500, 0.500000, 2.020000, 0.812500, 1.500000, 1.000000, 0.000000, 0.312500, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 1.318750, 1.062500, 0.500000, 0.298750, 1.062500, 1.500000, 1.318750, 0.000000, 0.312500, 0.312500, 0.500000, SideVisible.TOP, TEX));
+
 
         switch(rotate) {
             case 0:
                 yrot = 0;
-                if (inverted) {
-                    zrot = 180;
-                }
                 break;
             case 1:
-                if (inverted) {
-                    zrot = 180;
-                }
                 yrot = 180;
                 break;
             case 2:
-                if (inverted) {
-                    xrot = 180;
-                }
                 yrot = 90;
                 break;
             case 3:
-                if (inverted) {
-                    xrot = 180;
-                }
                 yrot = 270;
                 break;
         }
 
         for (int i=0; i<list.size(); i++) {
-            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, patchlist[i%6]));
+            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, patchlist[i]));
         } 
 
         return rotatedList.toArray(new RenderPatch[rotatedList.size()]);
@@ -168,51 +145,34 @@ public class CocricotStairBlockRenderer extends CustomRenderer {
     private RenderPatch[] buildCornerStepMeshes(RenderPatchFactory rpf, int dat) {
         ArrayList<RenderPatch> list = new ArrayList<RenderPatch>();
         ArrayList<RenderPatch> rotatedList = new ArrayList<RenderPatch>();
-        boolean inverted = (dat & 0x4) != 0;
         int rotate = dat & 0x3;
         int xrot = 0;
         int yrot = 0;
         int zrot = 0;
-        
-        addBox(rpf, list, 0, 1, 0.0, 0.5, 0, 1, extendedTexture? corPatchlist : patchlist );
-        addBox(rpf, list, 0.5, 1, 0, 1, 0.5, 1, extendedTexture? corPatchlist : patchlist );
+
+        int[] patchlist = {TEX,TEX,TEX,TEX};
+        list.add(rpf.getPatch(1.781250, 0.812500, 1.781250, 0.781250, 0.812500, 1.781250, 1.781250, 0.812500, 0.781250, 0.781250, 0.968750, 0.781250, 0.968750, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.812500, 1.000000, 0.312500, 0.812500, 1.000000, 0.312500, 1.812500, 1.000000, 1.312500, 0.812500, 1.000000, 0.500000, 0.687500, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.812500, 0.500000, 0.812500, 0.812500, 0.500000, 0.812500, 1.812500, 1.500000, 0.812500, 0.812500, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.500000, 0.000000, 0.812500, 0.500000, 1.000000, 0.812500, 1.500000, 0.000000, 0.812500, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
         
         switch(rotate) {
             case 0:
-                if (inverted) {
-                    xrot = 180;
-                }else{
-                    yrot = 270;
-                }
+                yrot = 270;
                 break;
             case 1:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 270;
-                }else{
-                    yrot = 180;
-                }
+                yrot = 180;
                 break;
             case 2:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 180;
-                }else{
-                    yrot = 90;
-                }
+                yrot = 90;
                 break;
             case 3:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 90;
-                }else{
-                    
-                }
+                yrot = 0;
                 break;
         }
 
         for (int i=0; i<list.size(); i++) {
-            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, (extendedTexture? corPatchlist : patchlist)[i%6]));
+            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, patchlist[i]));
         } 
 
         return rotatedList.toArray(new RenderPatch[rotatedList.size()]);
@@ -221,60 +181,41 @@ public class CocricotStairBlockRenderer extends CustomRenderer {
     private RenderPatch[] buildIntCornerStepMeshes(RenderPatchFactory rpf, int dat) {
         ArrayList<RenderPatch> list = new ArrayList<RenderPatch>();
         ArrayList<RenderPatch> rotatedList = new ArrayList<RenderPatch>();
-        boolean inverted = (dat & 0x4) != 0;
         int rotate = dat & 0x3;
         int xrot = 0;
         int yrot = 0;
         int zrot = 0;
-
         
-        addBox(rpf, list, 0, 1, 0.0, 0.5, 0, 1, extendedTexture? icorPatchlist1_ext : icorPatchlist1 );
-        addBox(rpf, list, 0.5, 1, 0, 1, 0, 1, extendedTexture? icorPatchlist2_ext : icorPatchlist2 );
-        addBox(rpf, list, 0, 0.5, 0, 1, 0.5, 1, extendedTexture? icorPatchlist3_ext : icorPatchlist3 );
-
+        int[] patchlist = {TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX,TEX};
+        list.add(rpf.getPatch(0.000000, 0.812500, 0.062500, 1.062500, 0.812500, 0.062500, 0.000000, 0.812500, 1.062500, 0.000000, 1.000000, 0.750000, 1.000000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.000000, 1.000000, 1.562500, 1.062500, 1.000000, 1.562500, 0.000000, 1.000000, 0.562500, 0.000000, 1.000000, 0.500000, 0.750000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 0.812500, 0.000000, 0.500000, 0.812500, 1.062500, 1.500000, 0.812500, 0.000000, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.000000, 0.500000, 1.062500, 1.062500, 0.500000, 1.062500, 0.000000, 1.500000, 1.062500, 0.000000, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 2.145833, 1.062500, 0.500000, 0.812500, 1.062500, 1.500000, 2.145833, 0.812500, 1.000000, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.062500, 0.812500, 0.812500, 0.062500, 0.812500, -0.227500, 1.062500, 0.812500, 0.812500, 0.000000, 0.781250, 0.750000, 1.000000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.562500, 1.000000, 0.812500, 1.562500, 1.000000, -0.227500, 0.562500, 1.000000, 0.812500, 0.000000, 0.781250, 0.500000, 0.750000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(0.812500, 0.500000, 0.000000, 0.812500, 0.500000, 1.000000, 0.812500, 1.500000, 0.000000, 0.000000, 0.812500, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        list.add(rpf.getPatch(1.062500, 0.500000, 0.812500, 1.062500, 0.500000, -0.187500, 1.062500, 1.500000, 0.812500, 0.000000, 0.812500, 0.312500, 0.500000, SideVisible.TOP, TEX));
+        
+        
         switch(rotate) {
             case 0:
-                if (inverted) {
-                    xrot = 180;
-                }else{
-                    yrot = 270;
-                }
+                yrot = 270;
                 break;
             case 1:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 90;
-                }else{
-                    yrot = 0;
-                }
+                yrot = 0;
                 break;
             case 2:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 270;
-                }else{
-                    yrot = 180;
-                }
+                yrot = 180;
                 break;
             case 3:
-                if (inverted) {
-                    xrot = 180;
-                    yrot = 180;
-                }else{
-                    yrot = 90;
-                }
+                yrot = 90;
                 break;
         }
 
-        for (int i=0; i<6; i++) {
-            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, (extendedTexture? icorPatchlist1_ext : icorPatchlist1)[i%6]));
+        for (int i=0; i<list.size(); i++) {
+            rotatedList.add(rpf.getRotatedPatch(list.get(i), xrot, yrot, zrot, patchlist[i]));
         }
-        for (int i=0; i<6; i++) {
-            rotatedList.add(rpf.getRotatedPatch(list.get(i+6), xrot, yrot, zrot, (extendedTexture? icorPatchlist2_ext : icorPatchlist2)[i%6]));
-        }
-        for (int i=0; i<6; i++) {
-            rotatedList.add(rpf.getRotatedPatch(list.get(i+12), xrot, yrot, zrot, (extendedTexture? icorPatchlist3_ext : icorPatchlist3)[i%6]));
-        }  
 
         return rotatedList.toArray(new RenderPatch[rotatedList.size()]);
     }

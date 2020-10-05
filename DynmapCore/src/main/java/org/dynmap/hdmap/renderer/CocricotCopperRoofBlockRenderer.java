@@ -180,28 +180,35 @@ public class CocricotCopperRoofBlockRenderer extends CustomRenderer {
         
         switch(rotate) {
             case 0:
-                yrot = 270;
                 if (inverted) {
-                    zrot = 180;
+                    xrot = 180;
+                }else{
+                    yrot = 270;
                 }
                 break;
             case 1:
                 if (inverted) {
-                    zrot = 180;
+                    xrot = 180;
+                    yrot = 270;
+                }else{
+                    yrot = 180;
                 }
-                yrot = 180;
                 break;
             case 2:
                 if (inverted) {
                     xrot = 180;
+                    yrot = 180;
+                }else{
+                    yrot = 90;
                 }
-                yrot = 90;
                 break;
             case 3:
                 if (inverted) {
                     xrot = 180;
+                    yrot = 90;
+                }else{
+                    
                 }
-                yrot = 0;
                 break;
         }
 
@@ -238,28 +245,35 @@ public class CocricotCopperRoofBlockRenderer extends CustomRenderer {
   
         switch(rotate) {
             case 0:
-                yrot = 270;
                 if (inverted) {
-                    zrot = 180;
+                    xrot = 180;
+                }else{
+                    yrot = 270;
                 }
                 break;
             case 1:
                 if (inverted) {
-                    zrot = 180;
+                    xrot = 180;
+                    yrot = 90;
+                }else{
+                    yrot = 0;
                 }
-                yrot = 0;
                 break;
             case 2:
                 if (inverted) {
                     xrot = 180;
+                    yrot = 270;
+                }else{
+                    yrot = 180;
                 }
-                yrot = 180;
                 break;
             case 3:
                 if (inverted) {
                     xrot = 180;
+                    yrot = 180;
+                }else{
+                    yrot = 90;
                 }
-                yrot = 90;
                 break;
         }
 
